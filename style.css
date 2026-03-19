@@ -1,0 +1,140 @@
+:root {
+    --gold: #c5a059;
+    --gold-bright: #ffcc66;
+    --dark: #050705;
+    --blood: #7b0000;
+    --text: #d1ccbc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background-color: var(--dark);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Затемнення країв екрану */
+.vignette {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 30%, black 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+canvas {
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Герой-секція */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 4;
+}
+
+.runes {
+    color: var(--gold);
+    letter-spacing: 15px;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.main-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 15vw, 10rem);
+    margin: 0;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+    animation: titleGlow 4s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold)); }
+    to { transform: scale(1.02); filter: drop-shadow(0 0 40px var(--gold-bright)); }
+}
+
+.tagline {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    color: var(--gold);
+    border-top: 1px solid var(--gold);
+    padding-top: 15px;
+}
+
+/* Контент та картки */
+.content {
+    max-width: 1200px;
+    margin: -80px auto 100px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(197, 160, 89, 0.1);
+    padding: 40px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.card:hover {
+    border-color: var(--gold);
+    transform: translateY(-15px);
+    background: rgba(30, 30, 30, 0.9);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+.card.highlight {
+    border-top: 3px solid var(--blood);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.card-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.footer {
+    text-align: center;
+    padding: 100px 20px;
+    opacity: 0.3;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 5px;
+}
+
